@@ -6,10 +6,60 @@ C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\bibliotheque_cours.hpp(42,23): w
           ]
 C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\bibliotheque_cours.hpp(82,80): warning C4310: le cast tronque la valeur constante
 C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\bibliotheque_cours.hpp(82,106): warning C4310: le cast tronque la valeur constante
-C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(237,77): warning C4100: 'nomActeur' : paramètre formel non référencé
-C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(237,51): warning C4100: 'listeFilms' : paramètre formel non référencé
-C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(63): warning C4700: variable locale 'i' non initialisée utilisée
-C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(143): warning C4172: retourne l'adresse d'une variable locale ou : acteur temporaire
-C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(190): warning C4172: retourne l'adresse d'une variable locale ou : film temporaire
-     Création de la bibliothèque C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\Debug\td2.lib et de l'objet C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\Debug\td2.exp
-  td2.vcxproj -> C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\Debug\td2.exe
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(110,27): error C2059: erreur de syntaxe : ')'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(123,7): error C2143: erreur de syntaxe : absence de ';' avant '*'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(123,7): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(123,20): error C2039: 'istream' n'est pas membre de 'Film'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\structures.hpp(18): message : voir la déclaration de 'Film'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(123,29): error C2039: 'fichier' n'est pas membre de 'Film'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\structures.hpp(18): message : voir la déclaration de 'Film'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(123,38): error C2039: 'ListeActeurs' n'est pas membre de 'Film'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\structures.hpp(18): message : voir la déclaration de 'Film'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(123,52): error C2039: 'listeActeurs' n'est pas membre de 'Film'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\structures.hpp(18): message : voir la déclaration de 'Film'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(123,64): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(124,1): error C2448: 'lireActeur' : l'initialiseur de style fonction semble être une définition de fonction
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(151,5): error C2143: erreur de syntaxe : absence de ';' avant '*'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(151,5): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(151,16): error C2039: 'istream' n'est pas membre de 'Film'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\structures.hpp(18): message : voir la déclaration de 'Film'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(151,25): error C2039: 'fichier' n'est pas membre de 'Film'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\structures.hpp(18): message : voir la déclaration de 'Film'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(151,32): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(152,1): error C2448: 'lireFilm' : l'initialiseur de style fonction semble être une définition de fonction
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(190,22): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(190,12): error C2146: erreur de syntaxe : absence de ';' avant l'identificateur 'creerListe'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(191,1): error C2143: erreur de syntaxe : absence de ';' avant '{'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(191,1): error C2447: '{' : en-tête de fonction manquant (liste formelle à l'ancien format ?)
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(212,33): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(212,33): error C2143: erreur de syntaxe : absence de ',' avant '&'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(213,1): error C2039: 'Acteur' n'est pas membre de 'Film'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\structures.hpp(18): message : voir la déclaration de 'Film'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(214,2): error C2039: 'cout' n'est pas membre de 'Film'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\structures.hpp(18): message : voir la déclaration de 'Film'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(214,18): error C2039: 'acteur' n'est pas membre de 'Film'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\structures.hpp(18): message : voir la déclaration de 'Film'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(214,25): error C2039: 'nom' n'est pas membre de 'Film'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\structures.hpp(18): message : voir la déclaration de 'Film'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(214,40): error C2065: 'acteur' : identificateur non déclaré
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(214,72): error C2065: 'acteur' : identificateur non déclaré
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(219,41): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(219,41): error C2143: erreur de syntaxe : absence de ',' avant '&'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(219,31): warning C4459: la déclaration de 'ListeFilms' masque la déclaration globale
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(190,1): message : voir la déclaration de 'ListeFilms'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(225,22): error C2065: 'listeFilms' : identificateur non déclaré
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(231,49): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(231,49): error C2143: erreur de syntaxe : absence de ',' avant '&'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(231,39): warning C4459: la déclaration de 'ListeFilms' masque la déclaration globale
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(190,1): message : voir la déclaration de 'ListeFilms'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(234,14): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(234,14): error C2143: erreur de syntaxe : absence de ';' avant '*'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(234,14): warning C4459: la déclaration de 'Acteur' masque la déclaration globale
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(123,1): message : voir la déclaration de 'Acteur'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(234,16): error C2065: 'acteur' : identificateur non déclaré
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(235,6): error C2065: 'acteur' : identificateur non déclaré
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(238,22): error C2065: 'acteur' : identificateur non déclaré
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(255,13): error C2146: erreur de syntaxe : absence de ';' avant l'identificateur 'listeFilms'
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(255,13): error C2065: 'listeFilms' : identificateur non déclaré
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(255,26): error C3861: 'creerListe' : identificateur introuvable
+C:\Users\Élizabeth Michaud\Desktop\INF1015-TP2\td2.cpp(259,21): error C2065: 'listeFilms' : identificateur non déclaré
