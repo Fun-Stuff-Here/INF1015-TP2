@@ -1,4 +1,4 @@
-﻿#pragma region "Includes"//{
+﻿/*#pragma region "Includes"//{
 #define _CRT_SECURE_NO_WARNINGS // On permet d'utiliser les fonctions de copies de chaînes qui sont considérées non sécuritaires.
 
 #include "structures.hpp"      // Structures de données pour la collection de films en mémoire.
@@ -336,4 +336,4 @@ int main()
 	//L'objet verifierFuitesAllocations devrait afficher "Aucune fuite detectee." a la sortie du programme;
 	//il affichera "Fuite detectee:" avec la liste des blocs, s'il manque des delete.
 	detruireListeFilm(listeFilms);
-}
+}*/

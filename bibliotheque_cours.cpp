@@ -21,7 +21,7 @@
 #include <type_traits>
 #include <array>
 #include <locale>
-#include "gsl/span"  // La version de VS dans les labs n'a pas <span> de C++20; on utilise gsl
+#include "../INF1015-TP2/include/gsl/span"  // La version de VS dans les labs n'a pas <span> de C++20; on utilise gsl
 #ifdef GSL_SPAN_H
 namespace std { using ::gsl::span; }
 #endif

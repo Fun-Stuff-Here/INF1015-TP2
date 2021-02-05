@@ -33,10 +33,11 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/execution-charset:utf-8 %(AdditionalOptions)</AdditionalOptions>
       <WarningLevel>Level4</WarningLevel>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -46,12 +47,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="bibliotheque_cours.cpp" />
+    <ClCompile Include="ListeFilms.cpp" />
     <ClCompile Include="td2.cpp" />
+    <ClCompile Include="td2_part2.cpp" />
     <ClCompile Include="verification_allocation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bibliotheque_cours.hpp" />
     <ClInclude Include="debogage_memoire.hpp" />
+    <ClInclude Include="ListeFilms.hpp" />
     <ClInclude Include="structures.hpp" />
     <ClInclude Include="verification_allocation.hpp" />
   </ItemGroup>
