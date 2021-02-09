@@ -4,13 +4,16 @@
 #include <string>
 #include "ListeFilms.hpp"
 
-struct Film; struct Acteur; // Permet d'utiliser les types alors qu'ils seront défini après.
+struct Film; // Permet d'utiliser les types alors qu'ils seront défini après.
 
-///*
-//struct ListeFilms {
-//	int capacite, nElements;
-//	Film** elements; // Pointeur vers un tableau de Film*, chaque Film* pointant vers un Film.
-//};*/
+
+struct Acteur
+{
+	std::string nom; int anneeNaissance; char sexe;
+	ListeFilms joueDans;
+};
+
+
 
 struct ListeActeurs {
 	int capacite, nElements;
@@ -24,8 +27,3 @@ struct Film
 	ListeActeurs acteurs;
 };
 
-struct Acteur
-{
-	std::string nom; int anneeNaissance; char sexe; 
-	ListeFilms joueDans;
-};

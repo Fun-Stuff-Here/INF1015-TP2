@@ -1,23 +1,14 @@
-﻿#pragma region "Includes"//{
+﻿
 #include "ListeFilms.hpp"
 //#include "structures.hpp"
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <limits>
-#include <algorithm>
-#include "cppitertools/range.hpp"
-#include "gsl/span"
 
-using namespace std;
-using namespace iter;
-using namespace gsl;
-#pragma endregion//}
 
 typedef uint8_t UInt8;
 typedef uint16_t UInt16;
 
-#pragma region "Fonctions de base pour lire le fichier binaire"//{
+using namespace std;
+using namespace gsl;
+using namespace iter;
 
 UInt8 lireUint8(istream& fichier)
 {
@@ -39,11 +30,12 @@ string lireString(istream& fichier)
 	return texte;
 }
 
-#pragma endregion//}
 
 ListeFilms::ListeFilms()
 {
-	ListeFilms(1);
+	nElements_ = 0;
+	capacite_ = 1;
+	elements_ = new Film * [capacite_];
 }
 
 ListeFilms::ListeFilms(int capacite)
@@ -59,12 +51,15 @@ ListeFilms::ListeFilms(std::string nomFichier)
 
 	ifstream fichier(nomFichier, ios::binary);
 	fichier.exceptions(ios::failbit);
+	
 
-	nElements_ = lireUint16(fichier);
+	nElements_ = 0;
+	capacite_ = 1;
+	int nFilms = lireUint16(fichier);
+	elements_ = new Film * [capacite_];
 
 	//TODO: Créer une liste de films vide.
-	ListeFilms{};
-	for (int i = 0; i < size(); i++) {
+	for (int i = 0; i < nFilms; i++) {
 		Film* ptrFilm = lireFilm(fichier);
 		ajouterFilm(ptrFilm);//TODO: Ajouter le film à la liste.
 	}
@@ -73,12 +68,11 @@ ListeFilms::ListeFilms(std::string nomFichier)
 
 ListeFilms::~ListeFilms()
 {
-	while (nElements_ != 0)
-	{
-		detruireFilm(elements_[0]);
-	}
+	//while (nElements_ != 0)
+	//{
+	//	detruireFilm(elements_[0]);
+	//}
 	delete[] elements_;
-	elements_ = nullptr;
 }
 
 
@@ -126,7 +120,7 @@ Acteur* ListeFilms::lireActeur(istream& fichier)
 	{	//Debug line
 		cout << actPtr->nom << endl;
 		//allocation memoire
-		actPtr->joueDans=ListeFilms{};
+		actPtr->joueDans = *new ListeFilms;
 
 		return  actPtr; //TODO: Retourner un pointeur soit vers un acteur existant ou un nouvel acteur ayant les bonnes informations, selon si l'acteur existait déjà.  Pour fins de débogage, affichez les noms des acteurs crées; vous ne devriez pas voir le même nom d'acteur affiché deux fois pour la création.
 	}
@@ -162,6 +156,7 @@ Film** ListeFilms::getFilms() const
 
 int ListeFilms::size() const
 {
+
 	return nElements_;
 }
 
@@ -176,7 +171,7 @@ void ListeFilms::detruireFilm(Film* ptrFilm)
 		{
 			//Debug
 			cout << "Destruction de l'acteur : " << ptrActeur->nom << endl;
-			delete &(ptrActeur->joueDans);
+			ptrActeur->joueDans.~ListeFilms();
 			delete ptrActeur;
 			ptrActeur = nullptr;
 		}
@@ -184,10 +179,10 @@ void ListeFilms::detruireFilm(Film* ptrFilm)
 	}
 	enleverFilm(ptrFilm);
 	//relacher la memoire du film
-	delete[] ptrFilm->acteurs.elements;
-	ptrFilm->acteurs.elements = nullptr;
-	delete ptrFilm;
-	ptrFilm = nullptr;
+	//delete[] ptrFilm->acteurs.elements;
+	//ptrFilm->acteurs.elements = nullptr;
+	//delete ptrFilm;
+	//ptrFilm = nullptr;
 }
 
 
@@ -207,7 +202,8 @@ void ListeFilms::enleverFilm(Film* ptrFilm)
 
 void ListeFilms::ajouterFilm(Film* ptrFilm)
 {
-	doublerCapacite();
+	if (size()>=capacite_)
+		doublerCapacite();
 	//add film
 	setFilm(size(), ptrFilm);
 

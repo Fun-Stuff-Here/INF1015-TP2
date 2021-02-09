@@ -1,7 +1,8 @@
 ﻿#pragma region "Includes"//{
 #define _CRT_SECURE_NO_WARNINGS // On permet d'utiliser les fonctions de copies de chaînes qui sont considérées non sécuritaires.
 #include "ListeFilms.hpp"
-#include "structures.hpp"      // Structures de données pour la collection de films en mémoire.
+//#include "structures.hpp"      // Structures de données pour la collection de films en mémoire.
+
 
 #include "bibliotheque_cours.hpp"
 #include "verification_allocation.hpp" // Nos fonctions pour le rapport de fuites de mémoire.
@@ -77,5 +78,5 @@ int main()
 	//TODO: Détruire tout avant de terminer le programme.
 	//L'objet verifierFuitesAllocations devrait afficher "Aucune fuite detectee." a la sortie du programme;
 	//il affichera "Fuite detectee:" avec la liste des blocs, s'il manque des delete.
-	delete &listeFilms;
+	listeFilms.~ListeFilms();
 }
