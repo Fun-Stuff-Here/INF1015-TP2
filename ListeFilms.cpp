@@ -1,14 +1,13 @@
 ﻿
 #include "ListeFilms.hpp"
-//#include "structures.hpp"
-
 
 typedef uint8_t UInt8;
 typedef uint16_t UInt16;
 
 using namespace std;
 using namespace gsl;
-//using namespace iter;
+using namespace iter;
+
 
 UInt8 lireUint8(istream& fichier)
 {
@@ -45,7 +44,6 @@ string lireString(istream& fichier)
 	ifstream fichier(nomFichier, ios::binary);
 	fichier.exceptions(ios::failbit);
 	
-
 	nElements_ = 0;
 	capacite_ = 1;
 	int nFilms = lireUint16(fichier);
@@ -61,7 +59,7 @@ string lireString(istream& fichier)
 
 ListeFilms::~ListeFilms()
 {
-
+	//vu à la semaine 4, utiliser la méthode detruireListeFilms à la place
 }
 
 void ListeFilms::detruireListeFilms()
@@ -149,7 +147,6 @@ Acteur* ListeFilms::trouverActeurListeActeurs(string nomRechercher, ListeActeurs
 
 void ListeFilms::detruireFilm(Film* ptrFilm)
 {
-	//joueDans rien
 	for (int i = 0; i < ptrFilm->acteurs.nElements; i++)
 	{
 		Acteur* ptrActeur = ptrFilm->acteurs.elements[i];
@@ -224,9 +221,10 @@ void ListeFilms::afficherListeFilms() const
 	static const string ligneDeSeparation = "\n\033[35mфффффффффффффффффффффффффффффффффффффффф\033[0m\n";
 	cout << ligneDeSeparation;
 	//TODO: Changer le for pour utiliser un span.
-	for (int i = 0; i < nElements_; i++) {
+	span<Film*> lFilms{elements_, nElements_};
+	for (int i = 0; i < lFilms.size(); i++) {
 		//TODO: Afficher le film.
-		afficherFilm(*elements_[i]);
+		afficherFilm(*lFilms[i]);
 		cout << ligneDeSeparation;
 	}
 }
@@ -250,4 +248,15 @@ void ListeFilms::afficherActeur(const Acteur& acteur) const
 Film* ListeFilms::operator[] (std::size_t const index) const
 {
 	return elements_[index];
+}
+
+
+void afficherFilmographieActeur(const ListeFilms& listeFilms, const string& nomActeur)
+{
+	//TODO: Utiliser votre fonction pour trouver l'acteur (au lieu de le mettre à nullptr).
+	const Acteur* acteur = listeFilms.trouverActeur(nomActeur);
+	if (acteur == nullptr)
+		cout << "Aucun acteur de ce nom" << endl;
+	else
+		acteur->joueDans.afficherListeFilms();
 }

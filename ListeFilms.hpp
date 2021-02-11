@@ -1,7 +1,6 @@
 #pragma once
 #pragma region "Includes"//{
 #include "ListeFilms.hpp"
-//#include "structures.hpp"
 #include "bibliotheque_cours.hpp"
 #include "verification_allocation.hpp" // Nos fonctions pour le rapport de fuites de mémoire.
 #include "debogage_memoire.hpp"        // Ajout des numéros de ligne des "new" dans le rapport de fuites.
@@ -11,8 +10,8 @@
 #include <string>
 #include <limits>
 #include <algorithm>
-//#include "cppitertools/range.hpp"
 #include "gsl/span"
+#include "cppitertools/range.hpp"
 
 #pragma endregion//}
 
@@ -37,7 +36,7 @@ class ListeFilms
 {
 public:
 	explicit ListeFilms();
-	explicit ListeFilms(std::string nomFichier); // creerListe
+	explicit ListeFilms(std::string nomFichier);
 	~ListeFilms();
 	void ajouterFilm(Film* ptrFilm);
 	Acteur* trouverActeur(std::string nom) const;
@@ -68,3 +67,4 @@ struct Acteur
 	ListeFilms joueDans;
 };
 
+void afficherFilmographieActeur(const ListeFilms& listeFilms, const std::string& nomActeur);
