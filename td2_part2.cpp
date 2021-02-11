@@ -53,7 +53,7 @@ int main()
 
 	cout << ligneDeSeparation << "Le premier film de la liste est:" << endl;
 	//TODO: Afficher le premier film de la liste.  Devrait être Alien.
-	listeFilms.afficherFilm(*listeFilms.getFilm(0));
+	listeFilms.afficherFilm(*listeFilms[0]);
 	cout << ligneDeSeparation << "Les films sont:" << endl;
 	//TODO: Afficher la liste des films.  Il devrait y en avoir 7.
 	listeFilms.afficherListeFilms();
@@ -66,7 +66,7 @@ int main()
 	afficherFilmographieActeur(listeFilms, ptrCumberbatch->nom);
 	//TODO: Détruire et enlever le premier film de la liste (Alien).  Ceci devrait "automatiquement" (par ce que font vos fonctions)
 	//détruire les acteurs Tom Skerritt et John Hurt, mais pas Sigourney Weaver puisqu'elle joue aussi dans Avatar.
-	listeFilms.detruireFilm(listeFilms.getFilm(0));
+	listeFilms.detruireFilm(listeFilms[0]);
 	cout << ligneDeSeparation << "Les films sont maintenant:" << endl;
 	//TODO: Afficher la liste des films.
 	listeFilms.afficherListeFilms();
@@ -78,5 +78,7 @@ int main()
 	//TODO: Détruire tout avant de terminer le programme.
 	//L'objet verifierFuitesAllocations devrait afficher "Aucune fuite detectee." a la sortie du programme;
 	//il affichera "Fuite detectee:" avec la liste des blocs, s'il manque des delete.
-	listeFilms.~ListeFilms();
+	listeFilms.detruireListeFilms();
 }
+
+

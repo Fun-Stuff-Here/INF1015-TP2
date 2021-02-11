@@ -31,22 +31,15 @@ string lireString(istream& fichier)
 }
 
 
-ListeFilms::ListeFilms()
+ ListeFilms::ListeFilms()
 {
 	nElements_ = 0;
 	capacite_ = 1;
 	elements_ = new Film * [capacite_];
 }
 
-ListeFilms::ListeFilms(int capacite)
-{
-	nElements_ = 0;
-	capacite_ = capacite;
-	elements_ = new Film*[capacite_];
-}
 
-
-ListeFilms::ListeFilms(std::string nomFichier)
+ ListeFilms::ListeFilms(std::string nomFichier)
 {
 
 	ifstream fichier(nomFichier, ios::binary);
@@ -68,11 +61,17 @@ ListeFilms::ListeFilms(std::string nomFichier)
 
 ListeFilms::~ListeFilms()
 {
-	//while (nElements_ != 0)
-	//{
-	//	detruireFilm(elements_[0]);
-	//}
+
+}
+
+void ListeFilms::detruireListeFilms()
+{
+	while (nElements_ != 0)
+	{
+	detruireFilm(elements_[0]);
+	}
 	delete[] elements_;
+	elements_ = nullptr;
 }
 
 
@@ -112,6 +111,7 @@ Acteur* ListeFilms::lireActeur(istream& fichier)
 	//check si existant
 	if (acteurExistant != nullptr)
 	{
+		actPtr->joueDans.detruireListeFilms();
 		delete actPtr;
 		actPtr = nullptr;
 		return acteurExistant;
@@ -119,9 +119,6 @@ Acteur* ListeFilms::lireActeur(istream& fichier)
 	else
 	{	//Debug line
 		cout << actPtr->nom << endl;
-		//allocation memoire
-		actPtr->joueDans = *new ListeFilms;
-
 		return  actPtr; //TODO: Retourner un pointeur soit vers un acteur existant ou un nouvel acteur ayant les bonnes informations, selon si l'acteur existait déjà.  Pour fins de débogage, affichez les noms des acteurs crées; vous ne devriez pas voir le même nom d'acteur affiché deux fois pour la création.
 	}
 }
@@ -129,9 +126,9 @@ Acteur* ListeFilms::lireActeur(istream& fichier)
 Acteur* ListeFilms::trouverActeur(string nom) const
 {
 	Acteur* ptrActeur = nullptr;
-	for (int i = 0; i < size(); i++)
+	for (int i = 0; i < nElements_; i++)
 	{
-		ptrActeur = trouverActeurListeActeurs(nom, getFilms()[i]->acteurs);
+		ptrActeur = trouverActeurListeActeurs(nom, elements_[i]->acteurs);
 		if (ptrActeur != nullptr)
 			break;
 	}
@@ -149,16 +146,8 @@ Acteur* ListeFilms::trouverActeurListeActeurs(string nomRechercher, ListeActeurs
 	return nullptr;
 }
 
-Film** ListeFilms::getFilms() const
-{
-	return elements_;
-}
 
-int ListeFilms::size() const
-{
 
-	return nElements_;
-}
 
 void ListeFilms::detruireFilm(Film* ptrFilm)
 {
@@ -167,11 +156,11 @@ void ListeFilms::detruireFilm(Film* ptrFilm)
 	{
 		Acteur* ptrActeur = ptrFilm->acteurs.elements[i];
 		ptrActeur->joueDans.enleverFilm(ptrFilm);
-		if (!(ptrActeur->joueDans.size()))
+		if (!(ptrActeur->joueDans.nElements_))
 		{
 			//Debug
 			cout << "Destruction de l'acteur : " << ptrActeur->nom << endl;
-			ptrActeur->joueDans.~ListeFilms();
+			ptrActeur->joueDans.detruireListeFilms();
 			delete ptrActeur;
 			ptrActeur = nullptr;
 		}
@@ -179,18 +168,18 @@ void ListeFilms::detruireFilm(Film* ptrFilm)
 	}
 	enleverFilm(ptrFilm);
 	//relacher la memoire du film
-	//delete[] ptrFilm->acteurs.elements;
-	//ptrFilm->acteurs.elements = nullptr;
-	//delete ptrFilm;
-	//ptrFilm = nullptr;
+	delete[] ptrFilm->acteurs.elements;
+	ptrFilm->acteurs.elements = nullptr;
+	delete ptrFilm;
+	ptrFilm = nullptr;
 }
 
 
 void ListeFilms::enleverFilm(Film* ptrFilm)
 {
-	for (int i = 0; i < size(); i++)
+	for (int i = 0; i < nElements_; i++)
 	{
-		if (ptrFilm == getFilms()[i])
+		if (ptrFilm == elements_[i])
 		{
 			elements_[i] = elements_[--nElements_];
 			elements_[nElements_] = nullptr;
@@ -202,10 +191,10 @@ void ListeFilms::enleverFilm(Film* ptrFilm)
 
 void ListeFilms::ajouterFilm(Film* ptrFilm)
 {
-	if (size()>=capacite_)
+	if (nElements_>=capacite_)
 		doublerCapacite();
 	//add film
-	setFilm(size(), ptrFilm);
+	elements_[nElements_]= ptrFilm;
 
 	//update listeFilms
 	nElements_++;
@@ -220,44 +209,13 @@ void ListeFilms::doublerCapacite()
 	Film** oldElements = elements_;
 	elements_ = new Film * [capacite_];
 	//copier
-	for (int i = 0; i < size(); i++)
+	for (int i = 0; i < nElements_; i++)
 	{
-		setFilm(i,oldElements[i]);
+		elements_[i] =oldElements[i];
 	}
 	//delete
 	delete[] oldElements;
 	oldElements = nullptr;
-}
-
-
-
-ListeFilms ListeFilms::copy(int capacite)
-{
-
-
-	ListeFilms l = ListeFilms{capacite};
-	for (unsigned i = 0; i < size(); i++)
-	{
-		l.setFilm(i, getFilm(i));
-	}
-	l.capacite_ = capacite_;
-	l.nElements_ = size();
-	return l;
-}
-
-Film* ListeFilms::getFilm(unsigned index) const
-{
-	if (index >= capacite_)
-		throw std::out_of_range("Indice trop grand");
-	return elements_[index];
-
-}
-
-void ListeFilms::setFilm(unsigned index, Film* ptrFilm)
-{
-	if (index >= capacite_)
-		throw std::out_of_range("Indice trop grand");
-	elements_[index] = ptrFilm;
 }
 
 
@@ -268,10 +226,9 @@ void ListeFilms::afficherListeFilms() const
 	static const string ligneDeSeparation = "\n\033[35mфффффффффффффффффффффффффффффффффффффффф\033[0m\n";
 	cout << ligneDeSeparation;
 	//TODO: Changer le for pour utiliser un span.
-	span<Film*> lFilms{getFilms(), size() };
-	for (int i = 0; i < lFilms.size(); i++) {
+	for (int i = 0; i < nElements_; i++) {
 		//TODO: Afficher le film.
-		afficherFilm(*lFilms[i]);
+		afficherFilm(*elements_[i]);
 		cout << ligneDeSeparation;
 	}
 }
@@ -289,4 +246,10 @@ void ListeFilms::afficherFilm(const Film& film)const
 void ListeFilms::afficherActeur(const Acteur& acteur) const
 {
 	cout << "  " << acteur.nom << ", " << acteur.anneeNaissance << " " << acteur.sexe << endl;
+}
+
+
+Film* ListeFilms::operator[] (std::size_t const index) const
+{
+	return elements_[index];
 }
