@@ -2,12 +2,16 @@
 #pragma region "Includes"//{
 #include "ListeFilms.hpp"
 //#include "structures.hpp"
+#include "bibliotheque_cours.hpp"
+#include "verification_allocation.hpp" // Nos fonctions pour le rapport de fuites de mémoire.
+#include "debogage_memoire.hpp"        // Ajout des numéros de ligne des "new" dans le rapport de fuites.
+
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <limits>
 #include <algorithm>
-#include "cppitertools/range.hpp"
+//#include "cppitertools/range.hpp"
 #include "gsl/span"
 
 #pragma endregion//}

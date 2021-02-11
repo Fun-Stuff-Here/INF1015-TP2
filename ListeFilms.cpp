@@ -8,7 +8,7 @@ typedef uint16_t UInt16;
 
 using namespace std;
 using namespace gsl;
-using namespace iter;
+//using namespace iter;
 
 UInt8 lireUint8(istream& fichier)
 {
@@ -77,8 +77,7 @@ void ListeFilms::detruireListeFilms()
 
 Film* ListeFilms::lireFilm(istream& fichier)
 {
-	Film* filmPtr;
-	filmPtr = new Film;
+	Film* filmPtr = new Film;
 	filmPtr->titre = lireString(fichier);
 	filmPtr->realisateur = lireString(fichier);
 	filmPtr->anneeSortie = lireUint16(fichier);
@@ -101,8 +100,7 @@ Film* ListeFilms::lireFilm(istream& fichier)
 
 Acteur* ListeFilms::lireActeur(istream& fichier)
 {
-	Acteur* actPtr;
-	actPtr = new Acteur;
+	Acteur* actPtr = new Acteur;
 	actPtr->nom = lireString(fichier);
 	actPtr->anneeNaissance = lireUint16(fichier);
 	actPtr->sexe = lireUint8(fichier);
@@ -161,7 +159,7 @@ void ListeFilms::detruireFilm(Film* ptrFilm)
 			//Debug
 			cout << "Destruction de l'acteur : " << ptrActeur->nom << endl;
 			ptrActeur->joueDans.detruireListeFilms();
-			delete ptrActeur;
+			delete ptrActeur; 
 			ptrActeur = nullptr;
 		}
 
@@ -170,7 +168,7 @@ void ListeFilms::detruireFilm(Film* ptrFilm)
 	//relacher la memoire du film
 	delete[] ptrFilm->acteurs.elements;
 	ptrFilm->acteurs.elements = nullptr;
-	delete ptrFilm;
+	delete ptrFilm; 
 	ptrFilm = nullptr;
 }
 
